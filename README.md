@@ -1,5 +1,6 @@
 # BlasterBot
 
+Send a personalized message to everyone in your Slack group.  Optionally chose who NOT to send the message to.
 
 Create config/eagle.js
 
