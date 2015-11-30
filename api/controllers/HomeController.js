@@ -29,25 +29,22 @@ module.exports = {
 				
 				if(!_.contains(exclude, slacker.id) && slacker.id != exclude) {
 					
-					//if(slacker.name == 'jasonarend' || slacker.name == 'mykebates') {
-					if(slacker.name == 'mykebates') {
-						console.log(exclude, slacker.id);
-						
-						
-						message = message.split('[name]').join(slacker.real_name || slacker.name);
-						message = message.split('[url]').join(sails.config.eagle.voteUrl);
-						
-						slack.api('chat.postMessage', {
-							text: message,
-							channel: '@' + slacker.name,
-							username: sails.config.eagle.botUserName,
-							icon_url: sails.config.eagle.botIcon,
-							unfurl_links: true
-						}, function(err, response){
-							//console.log(response);
-							sails.sockets.broadcast('eagle', 'message.sent', slacker.real_name || slacker.name);
-						});
-					}
+					console.log(exclude, slacker.id);
+					
+					
+					message = message.split('[name]').join(slacker.real_name || slacker.name);
+					message = message.split('[url]').join(sails.config.eagle.voteUrl);
+					
+					slack.api('chat.postMessage', {
+						text: message,
+						channel: '@' + slacker.name,
+						username: sails.config.eagle.botUserName,
+						icon_url: sails.config.eagle.botIcon,
+						unfurl_links: true
+					}, function(err, response){
+						//console.log(response);
+						sails.sockets.broadcast('eagle', 'message.sent', slacker.real_name || slacker.name);
+					});
 				}
 				
 			}, this);
