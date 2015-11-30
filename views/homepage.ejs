@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Eagle Speak Slack Bot</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-8 medium-8 columns">
+        <h5>Is there anyone you'd like to exclude from this blaster?</h5>
+        <form id="egg">
+            <div class="row">
+                <div class="large-12 columns">
+                    <label>Pick em'</label>
+                    <select multiple style="height: 400px;" id="exclude" name="exclude">
+                        <% data.members.forEach(function(slacker) { %>
+                            <option value="<%= slacker.id %>"><%= slacker.real_name || slacker.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <label>Message - available tokens [name], [url]</label>
+                    <textarea placeholder="small-12.columns" style="height: 100px;" id="message" name="message">Hey [name], something something something something message here please vote at [url]</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <p>
+                        <a href="#" class="medium success button soar">SEND</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="large-4 medium-4 columns">
+        <div class="callout success_list" style="display: none;">
+            <h5>Successfuly sent to the following</h5>
+            <ul>
+            </ul>
+        </div>
+    </div>
+</div>
